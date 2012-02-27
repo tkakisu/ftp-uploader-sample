@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<project name="s2jdbc-gen">
+	<target name="init">
+		<taskdef resource="s2jdbc-gen-task.properties" classpath="${classpath}" />
+		<property name="version" value="latest" />
+		<property name="classpathdir" value="src/main/webapp/WEB-INF/classes" />
+		<property name="rootpackagename" value="jp.okamatake.ftpsample.agile" />
+		<property name="entitypackagename" value="entity" />
+		<property name="javafiledestdir" value="src/main/java" />
+		<property name="testjavafiledestdir" value="src/test/java" />
+		<property name="javafileencoding" value="UTF-8" />
+		<property name="sqlfilepattern" value="META-INF/sql/**/*.sql" />
+		<property name="applyenvtoversion" value="false" />
+		<property name="uses2junit4" value="false" />
+		<property name="env" value="ut" />
+		<property name="jdbcmanagername" value="jdbcManager" />
+		<condition property="vmarg.encoding" value="-Dfile.encoding=UTF-8" else="">
+			<isset property="eclipse.pdebuild.home" />
+		</condition>
+	</target>
+	<target name="gen-entity" depends="init">
+		<gen-entity rootpackagename="${rootpackagename}" entitypackagename="${entitypackagename}" javafiledestdir="${javafiledestdir}" javafileencoding="${javafileencoding}" env="${env}" jdbcmanagername="${jdbcmanagername}" classpathref="maven.runtime.classpath">
+		</gen-entity>
+		<gen-names classpathdir="${classpathdir}" rootpackagename="${rootpackagename}" entitypackagename="${entitypackagename}" javafiledestdir="${javafiledestdir}" javafileencoding="${javafileencoding}" env="${env}" jdbcmanagername="${jdbcmanagername}" classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}" />
+		</gen-names>
+		<gen-sqlfileconstants classpathDir="${classpathdir}" rootpackagename="${rootpackagename}" javafiledestdir="${javafiledestdir}" javafileencoding="${javafileencoding}" env="${env}" jdbcmanagername="${jdbcmanagername}" classpathref="maven.runtime.classpath">
+			<sqlfileset dir="${classpathdir}">
+				<include name="${sqlfilepattern}" />
+			</sqlfileset>
+			<jvmarg value="${vmarg.encoding}" />
+		</gen-sqlfileconstants>
+		<gen-service classpathdir="${classpathdir}" rootpackagename="${rootpackagename}" entitypackagename="${entitypackagename}" javafiledestdir="${javafiledestdir}" javafileencoding="${javafileencoding}" env="${env}" jdbcmanagername="${jdbcmanagername}" classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}" />
+		</gen-service>
+		<!-- セキュリティの設定によっては以下の refresh タスクに時間がかかる場合があります．
+	      その場合は refresh タスクを削除してください．-->
+		<refresh projectName="${rootpackagename}" />
+	</target>
+
+	<target name="gen-ddl" depends="init">
+		<gen-ddl
+	      classpathdir="${classpathdir}"
+	      rootpackagename="${rootpackagename}"
+	      entitypackagename="${entitypackagename}"
+	      env="${env}"
+	      jdbcmanagername="${jdbcmanagername}"
+	      classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}"/>
+		</gen-ddl>
+		<gen-names
+	      classpathdir="${classpathdir}"
+	      rootpackagename="${rootpackagename}"
+	      entitypackagename="${entitypackagename}"
+	      javafiledestdir="${javafiledestdir}"
+	      javafileencoding="${javafileencoding}"
+	      env="${env}"
+	      jdbcmanagername="${jdbcmanagername}"
+	      classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}"/>
+		</gen-names>
+		<gen-sqlfileconstants
+	      classpathDir="${classpathdir}"
+	      rootpackagename="${rootpackagename}"
+	      javafiledestdir="${javafiledestdir}"
+	      javafileencoding="${javafileencoding}"
+	      env="${env}"
+	      jdbcmanagername="${jdbcmanagername}"
+	      classpathref="maven.runtime.classpath">
+			<sqlfileset dir="${classpathdir}">
+				<include name="${sqlfilepattern}" />
+			</sqlfileset>
+			<jvmarg value="${vmarg.encoding}"/>
+		</gen-sqlfileconstants>
+		<gen-service
+	      classpathdir="${classpathdir}"
+	      rootpackagename="${rootpackagename}"
+	      entitypackagename="${entitypackagename}"
+	      javafiledestdir="${javafiledestdir}"
+	      javafileencoding="${javafileencoding}"
+	      env="${env}"
+	      jdbcmanagername="${jdbcmanagername}"
+	      classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}"/>
+		</gen-service>
+		<!-- セキュリティの設定によっては以下の refresh タスクに時間がかかる場合があります．
+	      その場合は refresh タスクを削除してください．-->
+		<refresh projectName="jp.okamatake.sample"/>
+	</target>
+
+	<target name="migrate" depends="init">
+		<migrate
+	      classpathdir="${classpathdir}"
+	      rootpackagename="${rootpackagename}"
+	      entitypackagename="${entitypackagename}"
+	      applyenvtoversion="${applyenvtoversion}"
+	      version="${version}"
+	      env="${env}"
+	      jdbcmanagername="${jdbcmanagername}"
+	      classpathref="maven.runtime.classpath">
+			<jvmarg value="${vmarg.encoding}"/>
+		</migrate>
+		<!-- セキュリティの設定によっては以下の refresh タスクに時間がかかる場合があります．
+	      その場合は refresh タスクを削除してください．-->
+		<refresh projectName="jp.okamatake.sample"/>
+	</target>
+
+</project>
