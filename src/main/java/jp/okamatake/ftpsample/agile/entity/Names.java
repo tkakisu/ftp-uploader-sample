@@ -8,7 +8,7 @@ import jp.okamatake.ftpsample.agile.entity.FtpUserNames._FtpUserNames;
  * 名前クラスの集約です。
  * 
  */
-@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesAggregateModelFactoryImpl"}, date = "2012/04/08 13:06:09")
+@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesAggregateModelFactoryImpl"}, date = "2012/04/12 10:28:05")
 public class Names {
 
     /**
