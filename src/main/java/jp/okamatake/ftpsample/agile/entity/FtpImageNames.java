@@ -9,7 +9,7 @@ import org.seasar.extension.jdbc.name.PropertyName;
  * {@link FtpImage}のプロパティ名の集合です。
  * 
  */
-@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesModelFactoryImpl"}, date = "2012/04/12 10:28:04")
+@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesModelFactoryImpl"}, date = "2013/06/24 1:39:47")
 public class FtpImageNames {
 
     /**

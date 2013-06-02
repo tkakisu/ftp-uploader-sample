@@ -3,7 +3,11 @@
   "http://www.seasar.org/dtd/components24.dtd">
 <components namespace="s2junit4">
 
-  <component name="context" class="org.seasar.framework.unit.impl.InternalTestContextImpl"/>
+  <component name="context" class="org.seasar.framework.unit.impl.InternalTestContextImpl">
+    <initMethod name="setEjb3Enabled">
+      <arg>false</arg>
+    </initMethod>
+  </component>
 
   <component class="org.seasar.framework.unit.impl.DataAccessorImpl"/>
 

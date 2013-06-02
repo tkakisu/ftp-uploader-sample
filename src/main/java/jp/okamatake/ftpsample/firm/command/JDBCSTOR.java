@@ -1,4 +1,4 @@
-package jp.okamatake.ftpsample.firm;
+package jp.okamatake.ftpsample.firm.command;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

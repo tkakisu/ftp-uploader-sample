@@ -7,7 +7,7 @@ import org.seasar.extension.jdbc.name.PropertyName;
  * {@link FtpUser}のプロパティ名の集合です。
  * 
  */
-@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesModelFactoryImpl"}, date = "2012/04/12 10:28:04")
+@Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.NamesModelFactoryImpl"}, date = "2013/06/24 1:39:47")
 public class FtpUserNames {
 
     /**
@@ -42,8 +42,8 @@ public class FtpUserNames {
      * 
      * @return enableflagのプロパティ名
      */
-    public static PropertyName<Byte> enableflag() {
-        return new PropertyName<Byte>("enableflag");
+    public static PropertyName<Boolean> enableflag() {
+        return new PropertyName<Boolean>("enableflag");
     }
 
     /**
@@ -51,8 +51,8 @@ public class FtpUserNames {
      * 
      * @return writepermissionのプロパティ名
      */
-    public static PropertyName<Byte> writepermission() {
-        return new PropertyName<Byte>("writepermission");
+    public static PropertyName<Boolean> writepermission() {
+        return new PropertyName<Boolean>("writepermission");
     }
 
     /**
@@ -98,6 +98,15 @@ public class FtpUserNames {
      */
     public static PropertyName<Integer> maxloginperip() {
         return new PropertyName<Integer>("maxloginperip");
+    }
+
+    /**
+     * versionのプロパティ名を返します。
+     * 
+     * @return versionのプロパティ名
+     */
+    public static PropertyName<Long> version() {
+        return new PropertyName<Long>("version");
     }
 
     /**
@@ -165,8 +174,8 @@ public class FtpUserNames {
          *
          * @return enableflagのプロパティ名
          */
-        public PropertyName<Byte> enableflag() {
-            return new PropertyName<Byte>(this, "enableflag");
+        public PropertyName<Boolean> enableflag() {
+            return new PropertyName<Boolean>(this, "enableflag");
         }
 
         /**
@@ -174,8 +183,8 @@ public class FtpUserNames {
          *
          * @return writepermissionのプロパティ名
          */
-        public PropertyName<Byte> writepermission() {
-            return new PropertyName<Byte>(this, "writepermission");
+        public PropertyName<Boolean> writepermission() {
+            return new PropertyName<Boolean>(this, "writepermission");
         }
 
         /**
@@ -221,6 +230,15 @@ public class FtpUserNames {
          */
         public PropertyName<Integer> maxloginperip() {
             return new PropertyName<Integer>(this, "maxloginperip");
+        }
+
+        /**
+         * versionのプロパティ名を返します。
+         *
+         * @return versionのプロパティ名
+         */
+        public PropertyName<Long> version() {
+            return new PropertyName<Long>(this, "version");
         }
     }
 }

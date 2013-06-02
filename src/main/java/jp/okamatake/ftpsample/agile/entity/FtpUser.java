@@ -1,14 +1,16 @@
 package jp.okamatake.ftpsample.agile.entity;
 
 import java.io.Serializable;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 /**
  * FtpUserエンティティクラス
- * 
+ *
  */
 @Entity
 @Generated(value = {"S2JDBC-Gen 2.4.45", "org.seasar.extension.jdbc.gen.internal.model.EntityModelFactoryImpl"}, date = "2012/04/08 13:05:25")
@@ -30,12 +32,12 @@ public class FtpUser implements Serializable {
     public String homedirectory;
 
     /** enableflagプロパティ */
-    @Column(precision = 3, nullable = true, unique = false)
-    public Byte enableflag;
+    @Column(nullable = true, unique = false)
+    public Boolean enableflag;
 
     /** writepermissionプロパティ */
-    @Column(precision = 3, nullable = true, unique = false)
-    public Byte writepermission;
+    @Column(nullable = true, unique = false)
+    public Boolean writepermission;
 
     /** idletimeプロパティ */
     @Column(precision = 10, nullable = true, unique = false)
@@ -56,4 +58,8 @@ public class FtpUser implements Serializable {
     /** maxloginperipプロパティ */
     @Column(precision = 10, nullable = true, unique = false)
     public Integer maxloginperip;
+
+    @Version
+    @Column(precision = 64, nullable = false, unique = false)
+   public Long version = 0L;
 }

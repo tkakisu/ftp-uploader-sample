@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
 	"http://www.seasar.org/dtd/components24.dtd">
-<components>
-	<include path="jdbc.dicon"/>
-
-	<component class="org.apache.ftpserver.usermanager.DbUserManagerFactory">
-		<property name="passwordEncryptor"><component class="org.apache.ftpserver.usermanager.Md5PasswordEncryptor" /></property>
-		<property name="sqlUserInsert">"INSERT INTO FTP_USER (userid, userpassword,
-			homedirectory, enableflag, writepermission, idletime, uploadrate,
-			downloadrate) VALUES ('{userid}', '{userpassword}', '{homedirectory}',
-			'{enableflag}', '{writepermission}', {idletime}, {uploadrate},
-			{downloadrate})"</property>
-		<property name="sqlUserUpdate">"UPDATE FTP_USER SET
-			userpassword='{userpassword}',homedirectory='{homedirectory}',enableflag={enableflag},writepermission={writepermission},idletime={idletime},uploadrate={uploadrate},downloadrate={downloadrate}
-			WHERE userid='{userid}'"</property>
-		<property name="sqlUserDelete">"DELETE FROM FTP_USER WHERE userid = '{userid}'"</property>
-		<property name="sqlUserSelect">"SELECT userid, userpassword, homedirectory, enableflag, writepermission, idletime, uploadrate, downloadrate, maxloginnumber, maxloginperip FROM FTP_USER WHERE userid = '{userid}'"</property>
-		<property name="sqlUserSelectAll">"SELECT userid FROM FTP_USER ORDER BY userid"</property>
-		<property name="sqlUserAdmin">"SELECT userid FROM FTP_USER WHERE userid='{userid}' AND
-			userid='admin'"</property>
-		<property name="sqlUserAuthenticate">"SELECT userpassword from FTP_USER WHERE userid='{userid}'"</property>
+<components namespace="ftp">
+	<component class="jp.okamatake.ftpsample.firm.encryptor.PasswordGeneratorImpl">
+		<arg>"pSRGu9hDqnakoq4oyyawC6QZXAOXVBqqo4S6n1Kq"</arg>
+		<arg>"SHA-256"</arg>
 	</component>
 </components>

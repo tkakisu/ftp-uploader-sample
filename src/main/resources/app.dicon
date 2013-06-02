@@ -6,6 +6,7 @@
 	<include path="aop.dicon"/>
 	<include path="j2ee.dicon"/>
 	<include path="s2jdbc.dicon"/>
+	<include path="dxo.dicon"/>
 	<include path="ftp.dicon"/>
 	
 	<component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>

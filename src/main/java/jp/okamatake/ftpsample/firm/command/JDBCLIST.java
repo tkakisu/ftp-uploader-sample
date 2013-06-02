@@ -1,8 +1,10 @@
-package jp.okamatake.ftpsample.firm;
+package jp.okamatake.ftpsample.firm.command;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
+
+import jp.okamatake.ftpsample.firm.JDBCDirectoryLister;
 
 import org.apache.ftpserver.command.Command;
 import org.apache.ftpserver.command.impl.listing.ListArgument;
