@@ -12,8 +12,9 @@ import org.apache.ftpserver.util.DateUtils;
 import org.seasar.framework.container.SingletonS2Container;
 
 /**
- * @author okamoto
+ * {@link org.apache.ftpserver.command.impl.listing.DirectoryLister DirectoryLister}のJDBC版実装。
  * 
+ * @author okamoto
  */
 public class JDBCDirectoryLister {
 

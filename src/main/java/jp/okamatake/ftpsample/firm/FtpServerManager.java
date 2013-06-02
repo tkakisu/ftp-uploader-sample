@@ -14,7 +14,6 @@ import org.apache.ftpserver.ftplet.UserManager;
 import org.apache.ftpserver.listener.ListenerFactory;
 import org.apache.ftpserver.usermanager.UserManagerFactory;
 import org.seasar.framework.container.SingletonS2Container;
-import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 
 /**
  * FtpServerの起動テスト用.<br>
@@ -23,31 +22,13 @@ import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
  */
 public class FtpServerManager {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			SingletonS2ContainerFactory.init();
-			
-			FtpServerManager manager = new FtpServerManager();
-			FtpServer server = manager.createFtpServer();
-			server.start();
-		} catch (FtpException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
-
-	protected FtpServer createFtpServer() throws FtpException {
+	public FtpServer createFtpServer() throws FtpException {
 		FtpServerFactory serverFactory = new FtpServerFactory();
 		
 		serverFactory.setCommandFactory(getCommandFactory());
 		
 		ListenerFactory listenerFactory = new ListenerFactory();
-		
 		serverFactory.addListener("default", listenerFactory.createListener());
-		
 		
 		UserManagerFactory userManagerFactory = SingletonS2Container.getComponent(UserManagerFactory.class);
 		UserManager userManager = userManagerFactory.createUserManager();

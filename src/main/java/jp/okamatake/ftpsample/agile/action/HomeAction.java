@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 
 import jp.okamatake.ftpsample.agile.dto.ImageListDto;
 import jp.okamatake.ftpsample.agile.dto.UserDto;
+import jp.okamatake.ftpsample.agile.form.HomeForm;
 import jp.okamatake.ftpsample.agile.service.ImageListService;
 
+import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
 /**
@@ -17,6 +19,10 @@ import org.seasar.struts.annotation.Execute;
 public class HomeAction {
 	
 	public List<ImageListDto> imageList;
+	
+	@ActionForm
+	@Resource(name = "homeForm")
+	protected HomeForm form;
 
 	@Resource
 	protected ImageListService imageListService;

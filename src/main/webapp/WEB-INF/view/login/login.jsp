@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Ftp Uploader Sample</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="${f:url('/home')}">Home</a></li>

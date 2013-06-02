@@ -21,8 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * {@link org.apache.ftpserver.command.impl.LIST LIST}コマンドの代替。
+ * 
  * @author okamoto
- *
  */
 public class JDBCLIST implements Command {
 
@@ -38,7 +39,6 @@ public class JDBCLIST implements Command {
             throws IOException, FtpException {
 
         try {
-
             // reset state variables
             session.resetState();
 

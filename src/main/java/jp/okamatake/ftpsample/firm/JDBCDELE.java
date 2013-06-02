@@ -17,8 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * {@link org.apache.ftpserver.command.impl.DELE DELE}コマンドの代替。
+ * 
  * @author okamoto
- *
  */
 public class JDBCDELE implements Command {
 

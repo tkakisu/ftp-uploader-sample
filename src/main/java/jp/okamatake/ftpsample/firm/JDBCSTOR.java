@@ -31,7 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * STORコマンドの代替。
+ * {@link org.apache.ftpserver.command.impl.STOR STOR}コマンドの代替。
  * 多分、IoSessionに変わるSessionを作るべき。
  * 
  * @author okamoto
