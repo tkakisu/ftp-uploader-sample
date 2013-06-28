@@ -7,12 +7,23 @@
 	<version>0.1.0</version>
 	<packaging>war</packaging>
 	<description />
-
+	<url>https://github.com/okamatake/ftp-uploader-sample</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<seasar.version>2.4.45</seasar.version>
 	</properties>
-
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:git://github.com/okamatake/ftp-uploader-sample.git</connection>
+		<developerConnection>scm:git:git@github.com:okamatake/ftp-uploader-sample.git</developerConnection>
+		<url>https://github.com/okamatake/ftp-uploader-sample</url>
+	</scm>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
@@ -119,6 +130,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>maven.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2</url>
+		</repository>
+	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>maven.seasar.org</id>
@@ -131,13 +149,6 @@
 			<url>http://maven.seasar.org/maven2-snapshot</url>
 		</pluginRepository>
 	</pluginRepositories>
-	<repositories>
-		<repository>
-			<id>maven.seasar.org</id>
-			<name>The Seasar Foundation Maven2 Repository</name>
-			<url>http://maven.seasar.org/maven2</url>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>taglibs</groupId>
