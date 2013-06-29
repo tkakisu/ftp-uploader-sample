@@ -6,11 +6,12 @@
 	<artifactId>ftp-uploader-sample</artifactId>
 	<version>0.1.0</version>
 	<packaging>war</packaging>
-	<description />
+	<description>This is a RDB-based FTP implementation example powered by Apache Ftpserver and Seasar2.</description>
 	<url>https://github.com/okamatake/ftp-uploader-sample</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<seasar.version>2.4.45</seasar.version>
+		<cucumber.options>--format pretty</cucumber.options>
 	</properties>
 	<licenses>
 		<license>
@@ -55,7 +56,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1-beta-1</version>
+				<version>2.3</version>
 				<configuration>
 					<warSourceExcludes>WEB-INF/classes/**/*.*,WEB-INF/lib/*.jar</warSourceExcludes>
 				</configuration>
@@ -96,6 +97,23 @@
 				<goals>
 					<goal>run</goal>
 				</goals>
+				<executions>
+					<execution>
+						<id>it-migration</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<property name="classpath" refid="maven.compile.classpath" />
+								<ant antfile="${basedir}/s2jdbc-gen-build.xml" inheritRefs="true">
+									<target name="migrate" />
+								</ant>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -123,10 +141,106 @@
 				<configuration>
 					<buildOutputDirectory>src/main/webapp/WEB-INF/classes</buildOutputDirectory>
 					<downloadSources>true</downloadSources>
-					<additionalProjectnatures>
-						<projectnature>com.sysdeo.eclipse.tomcat.tomcatnature</projectnature>
-					</additionalProjectnatures>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<forkCount>8</forkCount>
+					<reuseForks>true</reuseForks>
+					<excludes>
+						<exclude>**/**IT</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.15</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/it/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-test-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>src/it/resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.11.v20130520</version>
+				<configuration>
+					<stopKey>EthernalForceBlizzard</stopKey>
+					<stopPort>9995</stopPort>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<daemon>true</daemon>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.6.3.201306030806</version>
+				<executions>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -247,7 +361,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -324,6 +438,29 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>1.1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.33.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
-

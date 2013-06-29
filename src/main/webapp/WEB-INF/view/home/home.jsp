@@ -58,7 +58,7 @@
 		<div>
 			<h1>ホーム画面</h1>
 			<c:forEach var="obj" items="${imageList}" varStatus="status">
-				<img src="${f:url('/image')}${f:h(obj.imageid)}" alt="" />
+				<img src="${f:url('/image')}${f:h(obj.imageid)}" alt="${f:h(obj.filename)}の画像" />
 			</c:forEach>
 		</div>
 

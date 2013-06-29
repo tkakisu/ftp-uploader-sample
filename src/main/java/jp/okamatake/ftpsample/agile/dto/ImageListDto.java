@@ -5,4 +5,6 @@ import java.math.BigInteger;
 public class ImageListDto {
 
 	public BigInteger imageId;
+
+	public String filename;
 }

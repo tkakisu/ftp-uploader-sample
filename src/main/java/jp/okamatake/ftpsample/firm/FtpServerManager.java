@@ -49,7 +49,7 @@ public class FtpServerManager {
 
 		// TODO: 多分DefaultCommands使った方が良い。それとも、FtpIoSessionが絡むところはすべて危険か？
 //		cff.setUseDefaultCommands(false);
-		Map<String, Command> commandMap = new HashMap<String, Command>();
+		Map<String, Command> commandMap = new HashMap<>();
 //		commandMap.put("USER", new USER());
 //		commandMap.put("PASS", new PASS());
 		/*

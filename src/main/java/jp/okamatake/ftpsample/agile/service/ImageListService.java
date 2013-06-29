@@ -12,8 +12,8 @@ public class ImageListService {
 
 	@Resource
 	private JdbcManager jdbcManager;
-	
+
 	public List<ImageListDto> getImageList(String userid) {
-		return jdbcManager.selectBySql(ImageListDto.class, "select image_id from ftp_image where userid = ? order by image_id", userid).getResultList();
+		return jdbcManager.selectBySqlFile(ImageListDto.class, "sql/ftpImage/getImageList.sql", userid).getResultList();
 	}
 }

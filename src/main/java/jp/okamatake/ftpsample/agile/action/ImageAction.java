@@ -14,24 +14,25 @@ import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
 public class ImageAction {
-	
+
 	@ActionForm
 	@Resource(name = "imageForm")
 	protected ImageForm form;
-	
+
 	@Resource
 	protected UserDto userDto;
-	
+
 	@Resource
 	protected HttpServletResponse response;
 
 	@Resource
 	protected FtpImageService ftpImageService;
-	
+
 	@Execute(validator = false, urlPattern = "{fileid}")
 	public String downloadImage() {
 		FtpImage image = ftpImageService.findById(form.fileid);
-		
+
+		// TODO: 画像に合わせた値に修正。
 		response.setContentType("image/jpeg");
 		try (BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream())) {
 			out.write(image.image);

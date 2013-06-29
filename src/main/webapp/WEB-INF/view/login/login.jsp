@@ -57,9 +57,9 @@
 		<div>
 			<h1>ログイン画面</h1>
 			<html:errors/>
-			<s:form>
-				<label>ユーザー名：<html:text property="username"/></label><br>
-				<label>パスワード：<html:password property="password"/></label><br>
+			<s:form styleId="login">
+				<label>ユーザー名：<html:text styleId="username" property="username"/></label><br>
+				<label>パスワード：<html:password styleId="password" property="password"/></label><br>
 				<input type="submit" name="doLogin" value="ログイン"/>
 			</s:form>
 		</div>
